@@ -1,0 +1,13 @@
+# Ignore rules for the ChestScan AI project.
+# Python
+__pycache__/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Operating system
+.DS_Store
+
+# Downloaded dataset
+data/

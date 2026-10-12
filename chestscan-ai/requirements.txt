@@ -1,0 +1,9 @@
+# Runtime dependencies for ChestScan AI.
+tensorflow
+numpy
+pandas
+matplotlib
+scikit-learn
+pillow
+streamlit
+kagglehub
