@@ -11,3 +11,8 @@ __pycache__/
 
 # Downloaded dataset
 data/
+
+archive.zip
+
+# Exported model artifact
+models/*.keras

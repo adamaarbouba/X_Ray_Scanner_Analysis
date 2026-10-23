@@ -15,7 +15,7 @@ The dataset must be downloaded with `kagglehub` and must not be stored in this r
 
 ## Preprocessing
 
-TODO: Describe image decoding, RGB conversion, resizing to 180 x 180, and model-side rescaling.
+The transfer-learning model in `notebooks/chestscan_tl.ipynb` accepts RGB images resized to `224 x 224`. The exported Keras model includes the model-side rescaling layer that maps pixel values from `[0, 255]` to `[-1, 1]`. The Streamlit app applies the same RGB conversion and resize when an image is uploaded.
 
 ## CNN Architecture
 
@@ -39,8 +39,16 @@ TODO: Document Python 3.10+ setup, dependency installation, Kaggle authenticatio
 
 ## How to Run the App
 
-TODO: Document the Streamlit command used to start the application.
+1. Install the dependencies with `pip install -r requirements.txt`.
+2. Run `notebooks/chestscan_tl.ipynb` through the model training and threshold cells, then run its final export cell. This creates `models/chestscan_tl.keras`.
+3. Start the app from the project root:
+
+	```bash
+	streamlit run app.py
+	```
+
+The app uses the exported model and does not download or require the training dataset at inference time.
 
 ## Disclaimer
 
-TODO: Explain that this educational prototype is not a medical device and must not be used for medical diagnosis or clinical decisions.
+This educational prototype is not a medical device and must not be used for medical diagnosis or clinical decisions.

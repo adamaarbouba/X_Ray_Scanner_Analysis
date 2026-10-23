@@ -1,4 +1,3 @@
-# Runtime dependencies for ChestScan AI.
 tensorflow
 numpy
 pandas
