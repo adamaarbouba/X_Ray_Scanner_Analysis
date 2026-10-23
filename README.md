@@ -1,53 +1,51 @@
-<!-- Skeleton documentation for the ChestScan AI project. -->
 # ChestScan AI
 
-## Project Description
+# Project Description
 
-TODO: Describe the prototype that classifies chest X-rays as `NORMAL` or `PNEUMONIA` with a TensorFlow/Keras CNN.
+ChestScan is a simple Streamlit app that uses a TensorFlow/Keras MobileNetV2
+model to classify uploaded chest X-ray images as `NORMAL` or `PNEUMONIA`.
 
-## Dataset Source
+The model is trained in `notebooks/chestscan_tl.ipynb` and exported as
+`models/chestscan_tl.keras`. The app resizes each uploaded image to `224 x 224`,
+converts it to RGB, and then passes it to the exported model.
 
-TODO: Document the Chest X-Ray Images (Pneumonia) dataset by Kermany et al., *Cell* (2018), licensed under CC BY 4.0.
+## Project Files
 
-Dataset link: [Kaggle: Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
+- `app.py`: Streamlit application
+- `models/chestscan_tl.keras`: exported trained model
+- `notebooks/chestscan_tl.ipynb`: training and evaluation notebook
+- `requirements.txt`: Python dependencies
 
-The dataset must be downloaded with `kagglehub` and must not be stored in this repository.
+## Run the App
 
-## Preprocessing
+Install the dependencies:
 
-The transfer-learning model in `notebooks/chestscan_tl.ipynb` accepts RGB images resized to `224 x 224`. The exported Keras model includes the model-side rescaling layer that maps pixel values from `[0, 255]` to `[-1, 1]`. The Streamlit app applies the same RGB conversion and resize when an image is uploaded.
+```bash
+pip install -r requirements.txt
+```
 
-## CNN Architecture
+Start Streamlit from the project root:
 
-TODO: Describe the CNN layers and output configuration.
+```bash
+streamlit run app.py
+```
 
-## Results
+Then open the local URL shown in the terminal and upload a JPG or PNG chest
+X-ray.
 
-TODO: Record evaluation metrics and relevant plots after training.
+## Train or Export the Model
 
-## Limits and Improvements
+The notebook downloads the Chest X-Ray Images (Pneumonia) dataset from Kaggle:
 
-TODO: Discuss dataset limitations, generalization, calibration, explainability, and future improvements.
+https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
-## Project Structure
+Run the notebook through training, then run its final export cell. The export
+cell creates `models/chestscan_tl.keras`, which is the file used by the app.
 
-TODO: Describe the notebook, source modules, app, models, and documentation directories.
+## Disclaimer
 
-## Installation and Data Download
-
-TODO: Document Python 3.10+ setup, dependency installation, Kaggle authentication, and `kagglehub` dataset download steps.
-
-## How to Run the App
-
-1. Install the dependencies with `pip install -r requirements.txt`.
-2. Run `notebooks/chestscan_tl.ipynb` through the model training and threshold cells, then run its final export cell. This creates `models/chestscan_tl.keras`.
-3. Start the app from the project root:
-
-	```bash
-	streamlit run app.py
-	```
-
-The app uses the exported model and does not download or require the training dataset at inference time.
+This is an educational project, not a medical device. Do not use its results
+for diagnosis or clinical decisions.
 
 ## Disclaimer
 
